@@ -1,16 +1,12 @@
 """
     name:  Samuel Snyder & Andrew Bailey
     
+    GeeksforGeeks was used in developing the strucutre for this project:
+    https://www.geeksforgeeks.org/traveling-salesman-problem-tsp-implementation/ 
+
 """
 
 from itertools import permutations
-
-
-# 4
-# 0 5 10 15
-# 5 0 20 25
-# 10 20 0 25
-# 15 25 25 0
 
 
 # matrix W, start at s
