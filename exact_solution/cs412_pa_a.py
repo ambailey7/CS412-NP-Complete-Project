@@ -1,5 +1,5 @@
 """
-    name:  Samuel Snyder & Andrew Bailey
+    name:  Sam Snyder & Andrew Bailey
     
     GeeksforGeeks was used in developing the strucutre for this project:
     https://www.geeksforgeeks.org/traveling-salesman-problem-tsp-implementation/ 
@@ -52,7 +52,8 @@ def main():
     print(edges)
 
     print()
-    exactTSP(edges, "a") 
+    exactTSP(edges, "a")
+    
     pass
 
 if __name__ == "__main__":
