@@ -80,17 +80,15 @@ def main():
         tsp[(v, u)] = w   
     
     print()
-    print("Running 10 Iterations:")
+    print("Running 100 Iterations:")
 
     bestSolution = None
     bestLength = None
-    for _ in range(10):
+    for _ in range(100):
         solution, length = hillClimbing(tsp)
         if bestLength == None or length < bestLength:
             bestLength = length
             bestSolution = solution
-        print(length)
-        print(' '.join(bestSolution))
     
     print()
     print("Best solution:")
