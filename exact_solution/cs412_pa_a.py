@@ -50,7 +50,7 @@ def problemGenerator(n):
             if i < j:
                 # ASCII a=97; z=122
                 m += 1
-                edges[(chr(i + 97), chr(j + 97))] = random.randint(1, 20)
+                edges[(chr(i + 97), chr(j + 97))] = random.randint(1, 100)
     # print in desired input format
     print(str(n) + " " + str(m))
     for u, v in edges:
@@ -69,7 +69,7 @@ def main():
 
     print()
     exactTSP(edges, "a")
-    problemGenerator(20)
+    
     pass
 
 if __name__ == "__main__":

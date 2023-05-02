@@ -20,6 +20,7 @@ def randomSolution(tsp):
         solution.append(city)
         cities.remove(city) # no repeat cities
     solution.append('a') # complete the cycle
+    
     return solution
 
 
@@ -42,56 +43,60 @@ def calculate(tsp, solution):
 
 
 def getBestNeighbor(tsp, neighbors):
-    bestRoute = calculate(tsp, neighbors[0])
+    bestLength = calculate(tsp, neighbors[0])
     bestNeighbor = neighbors[0]
     for neighbor in neighbors:
-        route = calculate(tsp, neighbor)
-        if route < bestRoute:
-            bestRoute = route
+        length = calculate(tsp, neighbor)
+        if length < bestLength:
+            bestLength = length
             bestNeighbor = neighbor
-    return bestNeighbor, bestRoute
+    
+    return bestNeighbor, bestLength
 
 
 def hillClimbing(tsp):
     currSolution = randomSolution(tsp)
-    currRoute = calculate(tsp, currSolution)
+    currLength = calculate(tsp, currSolution)
     neighbors = getNeighbors(currSolution)
-    bestNeighbor, bestRoute = getBestNeighbor(tsp, neighbors)
+    bestNeighbor, bestLength = getBestNeighbor(tsp, neighbors)
     
-    while bestRoute < currRoute:
+    while bestLength < currLength:
         currSolution = bestNeighbor
-        currRoute = bestRoute
+        currLength = bestLength
         neighbors = getNeighbors(currSolution)
-        bestNeighbor, bestRoute = getBestNeighbor(tsp, neighbors)
-    return currSolution, currRoute
-
-
-# problme generator to create a new problem as a matrix,
-# then convert it to the desired format (a, b, c)
-def problemGenerator(n):
-    edges = dict()
-    for i in range(n):
-        for j in range(n):
-            if i < j:
-                # ASCII a=97; z=122
-                edges[(chr(i + 97), chr(j + 97))] = random.randint(1, 20)
-    return edges
+        bestNeighbor, bestLength = getBestNeighbor(tsp, neighbors)
+    
+    return currSolution, currLength
 
 
 def main():
-# input is a number n and an nXn matrix
-    # _, e = [int(x) for x in input().split()]
-    # tsp = dict()
-    # for _ in range(e):
-    #     u, v, w = input().split()
-    #     w = int(w)
-    #     tsp[(u, v)] = w
-    #     tsp[(v, u)] = w   
+    # input is a number n and an nXn matrix
+    _, e = [int(x) for x in input().split()]
+    tsp = dict()
+    for _ in range(e):
+        u, v, w = input().split()
+        w = int(w)
+        tsp[(u, v)] = w
+        tsp[(v, u)] = w   
     
-    # print()
-    # print(hillClimbing(tsp))
+    print()
+    print("Running 10 Iterations:")
 
-    print(problemGenerator(3))
+    bestSolution = None
+    bestLength = None
+    for _ in range(10):
+        solution, length = hillClimbing(tsp)
+        if bestLength == None or length < bestLength:
+            bestLength = length
+            bestSolution = solution
+        print(length)
+        print(' '.join(bestSolution))
+    
+    print()
+    print("Best solution:")
+    print(bestLength)
+    print(' '.join(bestSolution))
+
     pass
 
 if __name__ == "__main__":

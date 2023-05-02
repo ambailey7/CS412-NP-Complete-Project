@@ -1,0 +1,11 @@
+5 10
+a b 68
+a c 28
+a d 96
+a e 7
+b c 95
+b d 2
+b e 58
+c d 62
+c e 41
+d e 56
