@@ -49,11 +49,10 @@ def main():
         w = int(w)
         edges[(u, v)] = w
         edges[(v, u)] = w   
-    print(edges)
 
     print()
     exactTSP(edges, "a")
-    
+
     pass
 
 if __name__ == "__main__":
