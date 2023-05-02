@@ -3,7 +3,6 @@
     Hein de Haan's solution for TPS using the hill climbing algorithm was used for developing this implementation:
     https://towardsdatascience.com/how-to-implement-the-hill-climbing-algorithm-in-python-1c65c29469de
 
-    
 """
 
 import random
@@ -67,18 +66,32 @@ def hillClimbing(tsp):
     return currSolution, currRoute
 
 
+# problme generator to create a new problem as a matrix,
+# then convert it to the desired format (a, b, c)
+def problemGenerator(n):
+    edges = dict()
+    for i in range(n):
+        for j in range(n):
+            if i < j:
+                # ASCII a=97; z=122
+                edges[(chr(i + 97), chr(j + 97))] = random.randint(1, 20)
+    return edges
+
+
 def main():
 # input is a number n and an nXn matrix
-    _, e = [int(x) for x in input().split()]
-    tsp = dict()
-    for _ in range(e):
-        u, v, w = input().split()
-        w = int(w)
-        tsp[(u, v)] = w
-        tsp[(v, u)] = w   
+    # _, e = [int(x) for x in input().split()]
+    # tsp = dict()
+    # for _ in range(e):
+    #     u, v, w = input().split()
+    #     w = int(w)
+    #     tsp[(u, v)] = w
+    #     tsp[(v, u)] = w   
     
-    print()
-    print(hillClimbing(tsp))
+    # print()
+    # print(hillClimbing(tsp))
+
+    print(problemGenerator(3))
     pass
 
 if __name__ == "__main__":

@@ -7,6 +7,7 @@
 """
 
 from itertools import permutations
+import random
 
 
 # matrix W, start at s
@@ -40,9 +41,25 @@ def exactTSP(edges, s):
     print(' '.join(shortest_path))
 
 
+# utility function to create a new problem in the desired format
+def problemGenerator(n):
+    edges = dict()
+    m = 0
+    for i in range(n):
+        for j in range(n):
+            if i < j:
+                # ASCII a=97; z=122
+                m += 1
+                edges[(chr(i + 97), chr(j + 97))] = random.randint(1, 20)
+    # print in desired input format
+    print(str(n) + " " + str(m))
+    for u, v in edges:
+        print(u + " "+ v + " " + str(edges[(u, v)]))
+
+
 def main():
     # input is a number n and an nXn matrix
-    n, e = [int(x) for x in input().split()]
+    _, e = [int(x) for x in input().split()]
     edges = dict()
     for _ in range(e):
         u, v, w = input().split()
@@ -52,7 +69,7 @@ def main():
 
     print()
     exactTSP(edges, "a")
-
+    problemGenerator(20)
     pass
 
 if __name__ == "__main__":
