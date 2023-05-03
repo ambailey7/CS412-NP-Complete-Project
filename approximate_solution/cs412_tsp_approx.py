@@ -4,6 +4,8 @@
     GREEDY ALGORITHM FOR TRAVELING SALESMAN PROBLEM
 
 """
+import random
+
 def nearestNeighbor(tsp, vertex_set, start):
     unvisited = vertex_set.copy()
     tour = []
@@ -44,11 +46,12 @@ def main():
         vertex_set.add(v)
     
     # choose our random start point
-    start = list(vertex_set)[0]
     approximation = None
     length = None
     
-    for i in range(10):
+    # random start point
+    for i in range(100):
+        start = random.choice(list(vertex_set))
         tour, weight = nearestNeighbor(tsp, vertex_set, start)
         if length == None or weight < length:
             length = weight
