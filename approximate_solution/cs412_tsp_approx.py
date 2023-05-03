@@ -6,7 +6,6 @@
 def nearestNeighbor(tsp, vertex_set, start):
     unvisited = vertex_set.copy()
     tour = []
-    total_weight = 0
         
     current_vertex = start
     tour.append(current_vertex)
@@ -25,8 +24,9 @@ def nearestNeighbor(tsp, vertex_set, start):
         current_vertex = next_vertex
         
     # add the starting vertex to the end of the tour
+    total_weight = sum([tsp[(tour[i], tour[i+1])] for i in range(len(tour) - 1)])
     tour.append(start)
-    return tour, min_weight
+    return tour, total_weight
     
     
     
@@ -39,21 +39,20 @@ def main():
     vertex_set = set()
     for _ in range(e):
         u, v, w = input().split()
-        w = float(w)
-        tsp[(u, v)] = w
-        tsp[(v, u)] = w
+        tsp[(u, v)] = float(w)
+        tsp[(v, u)] = float(w)
         vertex_set.add(u)
         vertex_set.add(v)
     
     # choose our random start point
     start = list(vertex_set)[0]
-    # print(start)
     approximation = None
     length = None
     
     approximation, length = nearestNeighbor(tsp, vertex_set, start)
-    # print(length)
-    # print(' '.join(approximation))
+
+    print(int(length))
+    print(' '.join(approximation))
     
 if __name__ == "__main__":
     main()
