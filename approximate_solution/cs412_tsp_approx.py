@@ -50,7 +50,6 @@ def getBestNeighbor(tsp, neighbors):
         if length < bestLength:
             bestLength = length
             bestNeighbor = neighbor
-    
     return bestNeighbor, bestLength
 
 
@@ -59,7 +58,6 @@ def hillClimbing(tsp, s):
     currLength = calculate(tsp, currSolution)
     neighbors = getNeighbors(currSolution)
     bestNeighbor, bestLength = getBestNeighbor(tsp, neighbors)
-    
     while bestLength < currLength:
         currSolution = bestNeighbor
         currLength = bestLength
@@ -84,12 +82,12 @@ def main():
     
     # choose our random start point
     start = list(vertex_set)[0]
-
+    print(start)
     bestSolution = None
     bestLength = None
     # Run n number of iterations
     # the shortest solution is closest to the global minimum
-    for _ in range(100):
+    for _ in range(1):
         solution, length = hillClimbing(tsp, start)
         if bestLength == None or length < bestLength:
             bestLength = length
