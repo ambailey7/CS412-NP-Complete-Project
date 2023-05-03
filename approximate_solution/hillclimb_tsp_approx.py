@@ -81,9 +81,8 @@ def main():
     vertex_set = set()
     for _ in range(e):
         u, v, w = input().split()
-        w = float(w)
-        tsp[(u, v)] = w
-        tsp[(v, u)] = w
+        tsp[(u, v)] = float(w)
+        tsp[(v, u)] = float(w)
         vertex_set.add(u)
         vertex_set.add(v)
     
