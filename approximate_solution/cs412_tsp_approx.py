@@ -7,19 +7,19 @@
 
 import random
 
-def randomSolution(tsp):
+def randomSolution(tsp, s):
     cities = []
     for u, _ in tsp:
-        if u not in cities and u != 'a':
+        if u not in cities and u != s:
             cities.append(u)
-    solution = ['a'] # always start with 'a'
-    numCities = len(cities) # nubmer of cities, not including 'a'
+    solution = [s] # start with our chosen element s
+    numCities = len(cities) # nubmer of cities, not including s
     
     for i in range(numCities):
         city = random.choice(cities)
         solution.append(city)
         cities.remove(city) # no repeat cities
-    solution.append('a') # complete the cycle
+    solution.append(s) # complete the cycle
     
     return solution
 
@@ -54,8 +54,8 @@ def getBestNeighbor(tsp, neighbors):
     return bestNeighbor, bestLength
 
 
-def hillClimbing(tsp):
-    currSolution = randomSolution(tsp) # initial solution
+def hillClimbing(tsp, s):
+    currSolution = randomSolution(tsp, s) # initial solution
     currLength = calculate(tsp, currSolution)
     neighbors = getNeighbors(currSolution)
     bestNeighbor, bestLength = getBestNeighbor(tsp, neighbors)
@@ -73,27 +73,28 @@ def main():
     # input is a number n and an nXn matrix
     _, e = [int(x) for x in input().split()]
     tsp = dict()
+    vertex_set = set()
     for _ in range(e):
         u, v, w = input().split()
-        w = int(w)
+        w = float(w)
         tsp[(u, v)] = w
-        tsp[(v, u)] = w   
+        tsp[(v, u)] = w
+        vertex_set.add(u)
+        vertex_set.add(v)
     
-    print()
-    print("Running 100 Iterations:")
+    # choose our random start point
+    start = list(vertex_set)[0]
 
     bestSolution = None
     bestLength = None
     # Run n number of iterations
     # the shortest solution is closest to the global minimum
     for _ in range(100):
-        solution, length = hillClimbing(tsp)
+        solution, length = hillClimbing(tsp, start)
         if bestLength == None or length < bestLength:
             bestLength = length
             bestSolution = solution
-    
-    print()
-    print("Best solution:")
+
     print(bestLength)
     print(' '.join(bestSolution))
 

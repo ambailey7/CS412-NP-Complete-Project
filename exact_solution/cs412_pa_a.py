@@ -50,26 +50,31 @@ def problemGenerator(n):
             if i < j:
                 # ASCII a=97; z=122
                 m += 1
-                edges[(chr(i + 97), chr(j + 97))] = random.randint(1, 100)
+                edges[(i, j)] = round(random.uniform(1.000, 1000.000), 3)
     # print in desired input format
     print(str(n) + " " + str(m))
     for u, v in edges:
-        print(u + " "+ v + " " + str(edges[(u, v)]))
+        print(str(u) + " "+ str(v) + " " + str(edges[(u, v)]))
 
 
 def main():
     # input is a number n and an nXn matrix
     _, e = [int(x) for x in input().split()]
     edges = dict()
+    vertex_set = set()
     for _ in range(e):
         u, v, w = input().split()
-        w = int(w)
+        w = float(w)
         edges[(u, v)] = w
         edges[(v, u)] = w   
+        vertex_set.add(u)
+        vertex_set.add(v)
+    
+    start = list(vertex_set)[0]
 
-    exactTSP(edges, "a")
+    exactTSP(edges, start)
     # call this to create a test case
-    # problemGenerator(13)
+    # problemGenerator(8)
 
     pass
 
