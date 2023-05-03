@@ -38,15 +38,19 @@ def calculate(tsp, solution):
     return length
 
 
+# def getBestNeighbor(tsp, neighbors):
+#     bestLength = calculate(tsp, neighbors[0])
+#     bestNeighbor = neighbors[0]
+#     for neighbor in neighbors:
+#         length = calculate(tsp, neighbor)
+#         if length < bestLength:
+#             bestLength = length
+#             bestNeighbor = neighbor
+#     return bestNeighbor, bestLength
+
 def getBestNeighbor(tsp, neighbors):
-    bestLength = calculate(tsp, neighbors[0])
-    bestNeighbor = neighbors[0]
-    for neighbor in neighbors:
-        length = calculate(tsp, neighbor)
-        if length < bestLength:
-            bestLength = length
-            bestNeighbor = neighbor
-    return bestNeighbor, bestLength
+    evaluationFunction = lambda neighbor: calculate(tsp, neighbor)
+    return min(neighbors, key=evaluationFunction), evaluationFunction(min(neighbors, key=evaluationFunction))
 
 
 def hillClimbing(tsp, vertices, s):
