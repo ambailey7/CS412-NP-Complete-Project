@@ -27,10 +27,7 @@ def nearestNeighbor(tsp, vertex_set, start):
     total_weight = sum([tsp[(tour[i], tour[i+1])] for i in range(len(tour) - 1)])
     tour.append(start)
     return tour, total_weight
-    
-    
-    
-    
+
     
 def main():
     # input is a number n and an nXn matrix
