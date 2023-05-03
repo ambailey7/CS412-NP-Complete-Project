@@ -48,7 +48,11 @@ def main():
     approximation = None
     length = None
     
-    approximation, length = nearestNeighbor(tsp, vertex_set, start)
+    for i in range(10):
+        tour, weight = nearestNeighbor(tsp, vertex_set, start)
+        if length == None or weight < length:
+            length = weight
+            approximation = tour
 
     print((length))
     print(' '.join(approximation))
