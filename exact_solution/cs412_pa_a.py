@@ -67,7 +67,6 @@ def main():
         edges[(u, v)] = w
         edges[(v, u)] = w   
 
-    print()
     exactTSP(edges, "a")
     # call this to create a test case
     # problemGenerator(13)
