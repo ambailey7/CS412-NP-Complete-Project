@@ -64,9 +64,8 @@ def main():
     vertex_set = set()
     for _ in range(e):
         u, v, w = input().split()
-        w = float(w)
-        edges[(u, v)] = w
-        edges[(v, u)] = w   
+        edges[(u, v)] = float(w)
+        edges[(v, u)] = float(w)
         vertex_set.add(u)
         vertex_set.add(v)
     
