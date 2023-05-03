@@ -1,5 +1,5 @@
 """
-    name:  Sam Snyder & Andrew Bailey
+    name:  Samuel Snyder & Andrew Bailey
     
     GeeksforGeeks was used in developing the strucutre for this project:
     https://www.geeksforgeeks.org/traveling-salesman-problem-tsp-implementation/ 

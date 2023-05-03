@@ -1,5 +1,5 @@
 """
-    name:  Sam Snyder & Andrew Bailey
+    name:  Samuel Snyder & Andrew Bailey
     Hein de Haan's solution for TPS using the hill climbing algorithm was used for developing this implementation:
     https://towardsdatascience.com/how-to-implement-the-hill-climbing-algorithm-in-python-1c65c29469de
 
