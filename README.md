@@ -29,7 +29,7 @@ a b c a
 
 
 ## Approximate Solution
-The input is exactly the same as the exact solution. It will run 100 iterations of the hill climbing algorithm to find the shortest possible solution.
+The input is exactly the same as for the exact solution. It will run the nearest neighbor algorithm to greedily choose the closest solution. A hill climbing implementation is also provided, reminiscent of a slower attempt at an approximation solution.
 
 
 
