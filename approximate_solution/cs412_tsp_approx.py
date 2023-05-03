@@ -23,9 +23,10 @@ def nearestNeighbor(tsp, vertex_set, start):
         unvisited.remove(next_vertex)
         current_vertex = next_vertex
         
+    # complete the cycle
+    tour.append(start)
     # add the starting vertex to the end of the tour
     total_weight = sum([tsp[(tour[i], tour[i+1])] for i in range(len(tour) - 1)])
-    tour.append(start)
     return tour, total_weight
 
     
@@ -48,7 +49,7 @@ def main():
     
     approximation, length = nearestNeighbor(tsp, vertex_set, start)
 
-    print(int(length))
+    print((length))
     print(' '.join(approximation))
     
 if __name__ == "__main__":

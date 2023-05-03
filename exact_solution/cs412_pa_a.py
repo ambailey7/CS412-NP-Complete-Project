@@ -50,7 +50,7 @@ def problemGenerator(n):
             if i < j:
                 # ASCII a=97; z=122
                 m += 1
-                edges[(i, j)] = round(random.uniform(1.000, 1000.000), 3)
+                edges[(i, j)] = round(random.uniform(1.000, 10.000), 0)
     # print in desired input format
     print(str(n) + " " + str(m))
     for u, v in edges:
@@ -73,7 +73,7 @@ def main():
 
     exactTSP(edges, start)
     # call this to create a test case
-    # problemGenerator(8)
+    # problemGenerator(5)
 
     pass
 
