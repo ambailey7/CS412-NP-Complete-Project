@@ -55,7 +55,7 @@ def getBestNeighbor(tsp, neighbors):
 
 
 def hillClimbing(tsp):
-    currSolution = randomSolution(tsp)
+    currSolution = randomSolution(tsp) # initial solution
     currLength = calculate(tsp, currSolution)
     neighbors = getNeighbors(currSolution)
     bestNeighbor, bestLength = getBestNeighbor(tsp, neighbors)
@@ -84,6 +84,8 @@ def main():
 
     bestSolution = None
     bestLength = None
+    # Run n number of iterations
+    # the shortest solution is closest to the global minimum
     for _ in range(100):
         solution, length = hillClimbing(tsp)
         if bestLength == None or length < bestLength:

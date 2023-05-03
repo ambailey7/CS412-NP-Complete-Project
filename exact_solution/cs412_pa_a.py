@@ -69,6 +69,8 @@ def main():
 
     print()
     exactTSP(edges, "a")
+    # call this to create a test case
+    # problemGenerator(13)
 
     pass
 
