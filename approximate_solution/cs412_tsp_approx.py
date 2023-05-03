@@ -1,6 +1,7 @@
 """
     name:  Samuel Snyder & Andrew Bailey
     ChatGPT idea for nearestNeighbor was used for developing this implementation:
+    GREEDY ALGORITHM FOR TRAVELING SALESMAN PROBLEM
 
 """
 def nearestNeighbor(tsp, vertex_set, start):
