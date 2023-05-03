@@ -30,3 +30,8 @@ a b c a
 
 ## Approximate Solution
 The input is exactly the same as the exact solution. It will run 100 iterations of the hill climbing algorithm to find the shortest possible solution.
+
+
+
+## Running Test Cases
+In both the exact and approximate solution folders, there exists a run_test_case.sh file. Each file will run the corresponding solution with the provided test cases. Any added test cases must be in the form "test_case#.txt" where the '#' is a new number.
