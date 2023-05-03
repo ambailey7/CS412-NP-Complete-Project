@@ -56,20 +56,13 @@ def getBestNeighbor(tsp, neighbors):
 def hillClimbing(tsp, vertices, s):
     currSolution = randomSolution(vertices, s) # initial solution
     currLength = calculate(tsp, currSolution)
-    print("here-1")
     neighbors = getNeighbors(currSolution)
-    print("here")
     bestNeighbor, bestLength = getBestNeighbor(tsp, neighbors)
-    print("here2")
-    i = 0
     while bestLength < currLength:
         currSolution = bestNeighbor
         currLength = bestLength
         neighbors = getNeighbors(currSolution)
         bestNeighbor, bestLength = getBestNeighbor(tsp, neighbors)
-        i += 1
-        print(i)
-        print("bestLength: ", bestLength)
     
     return currSolution, currLength
 
