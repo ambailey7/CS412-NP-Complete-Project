@@ -7,31 +7,27 @@
 
 import random
 
-def randomSolution(tsp, s):
-    cities = []
-    for u, _ in tsp:
-        if u not in cities and u != s:
-            cities.append(u)
-    solution = [s] # start with our chosen element s
-    numCities = len(cities) # nubmer of cities, not including s
-    
-    for i in range(numCities):
-        city = random.choice(cities)
-        solution.append(city)
-        cities.remove(city) # no repeat cities
-    solution.append(s) # complete the cycle
-    
+def randomSolution(vertices, s):
+    solution = [s]
+    num = len(vertices) - 1 # minus s
+    v = vertices.copy()
+    v.remove(s)
+    v = list(v)
+    for _ in range(num):
+        choice = random.choice(v)
+        solution.append(choice)
+        v.remove(choice)
+    solution.append(s)
+
     return solution
 
 
 def getNeighbors(solution):
     neighbors = []
     for i in range(1, len(solution) - 1):
-        for j in range(i + 1, len(solution) - 1):
-            neighbor = solution.copy()
-            neighbor[i] = solution[j]
-            neighbor[j] = solution[i]
-            neighbors.append(neighbor)
+        neighbor = solution.copy()
+        neighbor[i], neighbor[i+1] = neighbor[i+1], neighbor[i]
+        neighbors.append(neighbor)
     return neighbors
 
 
@@ -53,16 +49,23 @@ def getBestNeighbor(tsp, neighbors):
     return bestNeighbor, bestLength
 
 
-def hillClimbing(tsp, s):
-    currSolution = randomSolution(tsp, s) # initial solution
+def hillClimbing(tsp, vertices, s):
+    currSolution = randomSolution(vertices, s) # initial solution
     currLength = calculate(tsp, currSolution)
+    print("here-1")
     neighbors = getNeighbors(currSolution)
+    print("here")
     bestNeighbor, bestLength = getBestNeighbor(tsp, neighbors)
+    print("here2")
+    i = 0
     while bestLength < currLength:
         currSolution = bestNeighbor
         currLength = bestLength
         neighbors = getNeighbors(currSolution)
         bestNeighbor, bestLength = getBestNeighbor(tsp, neighbors)
+        i += 1
+        print(i)
+        print("bestLength: ", bestLength)
     
     return currSolution, currLength
 
@@ -88,7 +91,7 @@ def main():
     # Run n number of iterations
     # the shortest solution is closest to the global minimum
     for _ in range(1):
-        solution, length = hillClimbing(tsp, start)
+        solution, length = hillClimbing(tsp, vertex_set, start)
         if bestLength == None or length < bestLength:
             bestLength = length
             bestSolution = solution
