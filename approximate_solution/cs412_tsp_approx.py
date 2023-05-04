@@ -49,13 +49,14 @@ def main():
     approximation = None
     length = None
     
-    # random start point
     for i in range(100):
         start = random.choice(list(vertex_set))
         tour, weight = nearestNeighbor(tsp, vertex_set, start)
         if length == None or weight < length:
             length = weight
             approximation = tour
+    # start = random.choice(list(vertex_set))    
+    # tour, weight = nearestNeighbor(tsp, vertex_set, start)
 
     print((length))
     print(' '.join(approximation))
